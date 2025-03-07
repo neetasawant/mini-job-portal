@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mini HR Job Board with Resume Parsing
 
-## Getting Started
+## Overview
+This project is a Mini HR Job Board that allows recruiters to post jobs and candidates to apply by uploading their resumes. The application features resume parsing to extract key details like name, email, phone number, and skills.
 
-First, run the development server:
+## Tech Stack
+- **Frontend:** Next.js, Tailwind CSS
+- **Backend:** Express.js, Node.js
+- **Database:** MongoDB
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Resume Parsing
+- Uses **pdf-parse** for PDFs
+- Uses **mammoth** for .docx
+- Uses **word-extractor** for .doc
+- Extracts **Name, Email, Phone, and Skills** from resumes
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Candidate Features
+- View job list
+- Register & Login
+- Upload a resume while applying for a job
+- Automatic extraction of details from resumes
+- View applied jobs and application status
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Recruiter Features
+- Register & Login
+- Post job listings
+- Edit job listings
+- Delete job listings
+- View job applications along with parsed resume details
+- Update application status
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+### Backend Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/neetasawant/mini-job-portal.git
+   cd mini-job-portal/backend
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Create a `.env` file in the backend directory and add:
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   ```
+4. Start the backend server:
+   ```sh
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Frontend Setup
+1. Navigate to the frontend folder:
+   ```sh
+   cd ../frontend
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the frontend server:
+   ```sh
+   npm run dev
+   ```
+4. Open the application in a browser:
+   - **URL:** [http://localhost:3000](http://localhost:3000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API Endpoints
 
-## Deploy on Vercel
+### Authentication
+- `POST /api/auth/register` - Register a user
+- `POST /api/auth/login` - Login a user
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Job Management
+- `POST /api/jobs` - Create a job (Recruiter only)
+- `GET /api/jobs` - Get all jobs
+- `GET /api/jobs/:id` - Get job by ID
+- `PUT /api/jobs/:id` - Update job by ID
+- `DELETE /api/jobs/:id` - Delete job by ID
+- `GET /api/jobs/recruiter/jobs` - Get jobs by recruiter
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Application Management
+- `POST /api/applications` - Apply for a job (with resume upload)
+- `GET /api/applications/recruiter` - View recruiter’s job applications
+- `GET /api/applications/candidate` - View candidate’s applications
+- `PUT /api/applications/:id/status` - Update application status
+
+## Future Enhancements
+- Improved resume parsing with AI
+- Job search and filtering
+- Email notifications
+
