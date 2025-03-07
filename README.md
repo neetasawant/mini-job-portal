@@ -3,6 +3,8 @@
 ## Overview
 This project is a Mini HR Job Board that allows recruiters to post jobs and candidates to apply by uploading their resumes. The application features resume parsing to extract key details like name, email, phone number, and skills.
 
+[Watch the Demo]([https://your-video-link.com](https://vimeo.com/manage/videos/1063632049))
+
 ## Tech Stack
 - **Frontend:** Next.js, Tailwind CSS
 - **Backend:** Express.js, Node.js
